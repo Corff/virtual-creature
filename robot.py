@@ -48,4 +48,4 @@ class ROBOT:
 
     def Get_Fitness(self):
         pos = p.getLinkState(self.id,0)[0]
-        return ((pos[0] ** 2) + (pos[1] ** 2)) ** 0.5
+        return (((pos[0]-1) ** 2) + ((pos[1]+0.5) ** 2)) ** 0.5

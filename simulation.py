@@ -7,8 +7,11 @@ import pybullet_data
 import time
 
 class SIMULATION:
-    def __init__(self):
-        self.physicsClient = p.connect(p.DIRECT)
+    def __init__(self, demo):
+        if demo:
+            self.physicsClient = p.connect(p.GUI)
+        else:
+            self.physicsClient = p.connect(p.DIRECT)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0,-9.8)
 
