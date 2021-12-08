@@ -1,5 +1,10 @@
 from simulation import SIMULATION
+from generate import Create_Brain
+
+def eval(genes):
+	Create_Brain(genes)
+	sim = SIMULATION()
+	sim.Run(10000)
 
 if __name__ == "__main__":
-	sim = SIMULATION()
-	sim.Run(100000)
+	eval([[0.1 for _ in range(8)] for _ in range(8)])

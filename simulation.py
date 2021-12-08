@@ -15,13 +15,22 @@ class SIMULATION:
         self.world = WORLD(p)
         self.robot = ROBOT(p, 2, 2)
 
+    def Demo(self, n):
+        for i in range(n):
+            p.stepSimulation()
+            self.robot.Sense(i)
+            self.robot.Think(i)
+            self.robot.Act(i)
+            time.sleep(1.0/3000.0)
+
     def Run(self, n):
         for i in range(n):
             p.stepSimulation()
             self.robot.Sense(i)
+            self.robot.Think(i)
             self.robot.Act(i)
-
-            time.sleep(1.0/3000.0)
+        
+        return self.robot.Get_Fitness()
 
     def __del__(self):
         p.disconnect()

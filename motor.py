@@ -17,5 +17,5 @@ class MOTOR:
                 bodyIndex = self.bodyId,
                 jointName = self.jointName,
                 controlMode = p.POSITION_CONTROL,
-                targetPosition = self.vector[0] * np.sin(self.vector[1] * value + self.vector[2]),
+                targetPosition = value,#self.vector[0] * np.sin(self.vector[1] * value + self.vector[2]),
                 maxForce = 50)
