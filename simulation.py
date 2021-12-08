@@ -33,6 +33,3 @@ class SIMULATION:
         fitness =  self.robot.Get_Fitness()
         p.disconnect()
         return fitness
-
-    def __del__(self):
-        p.disconnect()
