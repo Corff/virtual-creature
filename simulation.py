@@ -26,7 +26,7 @@ class SIMULATION:
             self.robot.Act(0)
             time.sleep(1.0/10000.0)
 
-    def Run(self, n, penalty):
+    def Run(self, n, penalty, onlyStraight):
         if penalty:
             penalty_total = 0
             penalty_counter = 0
@@ -40,7 +40,7 @@ class SIMULATION:
                     penalty_counter+=1
                     penalty_total+=0.5*(1/penalty_counter)
         
-        fitness =  self.robot.Get_Fitness()
+        fitness =  self.robot.Get_Fitness(onlyStraight)
         if penalty:
             fitness-=penalty_total
         p.disconnect()

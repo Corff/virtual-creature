@@ -1,12 +1,12 @@
 from simulation import SIMULATION
 from generate import Create_Brain
 
-def eval(genes, penalty = False):
+def eval(genes, penalty = False, onlyStraight = False):
 	Create_Brain(genes)
 	sim = SIMULATION(False)
-	return sim.Run(1000, penalty)
+	return sim.Run(1000, penalty, onlyStraight)
 
-def demo(genes):
+def demo():
 	#Create_Brain(genes)
 	sim = SIMULATION(True)
 	sim.Demo(2500)

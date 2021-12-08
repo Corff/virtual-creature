@@ -46,11 +46,9 @@ class ROBOT:
 
                 self.motors[jointName].Set_Value(desiredAngle)  
 
-    def Get_Fitness(self):
+    def Get_Fitness(self, onlyStraight):
         pos = p.getLinkState(self.id,0)[0]
-        # penalty = 0
-        # if self.nn.neurons['0'].Get_Value() == 1:
-        #     penalty += 1
-        #     print(penalty)
-        #return pos[0]
-        return (((pos[0]-1) ** 2) + ((pos[1]+0.5) ** 2)) ** 0.5# - penalty
+        if onlyStraight:
+            return pos[0]
+        else:
+            return (((pos[0]-1) ** 2) + ((pos[1]+0.5) ** 2)) ** 0.5
