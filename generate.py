@@ -9,30 +9,101 @@ def Create_World():
 
 def Create_Body():
     pyrosim.Start_URDF("body.urdf")
+    n = 3
 
+    if n == 0:
     # Bodies
-    pyrosim.Send_Cube(name="Torso", pos=[0, 0, 1], size=[2, 1, 0.5])
+        pyrosim.Send_Cube(name="Torso", pos=[0, 0, 1], size=[2, 1, 0.5])
+        
+        pyrosim.Send_Joint(name="Torso_FLT", parent="Torso", child="FLT", type="revolute", position="1 -0.5 1.25")
+        pyrosim.Send_Cube(name="FLT", pos=[0, 0, -0.5], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="FLT_FLL", parent="FLT", child="FLL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="FLL", pos=[0, 0, -0.5], size=[0.1, 0.1, 0.5])
+
+        pyrosim.Send_Joint(name="Torso_FRT", parent="Torso", child="FRT", type="revolute", position="1 0.5 1.25")
+        pyrosim.Send_Cube(name="FRT", pos=[0, 0, -0.5], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="FRT_FRL", parent="FRT", child="FRL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="FRL", pos=[0, 0, -0.5], size=[0.1, 0.1, 0.5])
+        
+        pyrosim.Send_Joint(name="Torso_BLT", parent="Torso", child="BLT", type="revolute", position="-1 -0.5 1.25")
+        pyrosim.Send_Cube(name="BLT", pos=[0, 0, -0.5], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="BLT_BLL", parent="BLT", child="BLL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="BLL", pos=[0, 0, -0.5], size=[0.1, 0.1, 0.5])
+
+        pyrosim.Send_Joint(name="Torso_BRT", parent="Torso", child="BRT", type="revolute", position="-1 0.5 1.25")
+        pyrosim.Send_Cube(name="BRT", pos=[0, 0, -0.5], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="BRT_BRL", parent="BRT", child="BRL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="BRL", pos=[0, 0, -0.5], size=[0.1, 0.1, 0.5])
     
-    pyrosim.Send_Joint(name="Torso_FLT", parent="Torso", child="FLT", type="revolute", position="1 -0.5 1.25")
-    pyrosim.Send_Cube(name="FLT", pos=[0, 0, -0.5], size=[0.15, 0.15, 0.5])
-    pyrosim.Send_Joint(name="FLT_FLL", parent="FLT", child="FLL", type="revolute", position="0 0 -0.5")
-    pyrosim.Send_Cube(name="FLL", pos=[0, 0, -0.5], size=[0.1, 0.1, 0.5])
+    elif(n == 1):#forwardback, leftright, updown
+        pyrosim.Send_Cube(name="Torso", pos=[0,0,1], size = [.5,5,.5])
 
-    pyrosim.Send_Joint(name="Torso_FRT", parent="Torso", child="FRT", type="revolute", position="1 0.5 1.25")
-    pyrosim.Send_Cube(name="FRT", pos=[0, 0, -0.5], size=[0.15, 0.15, 0.5])
-    pyrosim.Send_Joint(name="FRT_FRL", parent="FRT", child="FRL", type="revolute", position="0 0 -0.5")
-    pyrosim.Send_Cube(name="FRL", pos=[0, 0, -0.5], size=[0.1, 0.1, 0.5])
+        pyrosim.Send_Joint(name="Torso_FLT", parent="Torso", child="FLT", type="revolute", position=".325 -2.425, 1")
+        pyrosim.Send_Cube(name="FLT", pos=[0, 0, -0.5], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="FLT_FLL", parent="FLT", child="FLL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="FLL", pos=[0, 0, -0.5], size=[0.1, 0.1, 0.5])
+
+        pyrosim.Send_Joint(name="Torso_FRT", parent="Torso", child="FRT", type="revolute", position=".325 2.425 1")
+        pyrosim.Send_Cube(name="FRT", pos=[0, 0, -0.5], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="FRT_FRL", parent="FRT", child="FRL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="FRL", pos=[0, 0, -0.5], size=[0.1, 0.1, 0.5])
+
+        pyrosim.Send_Joint(name="Torso_BLT", parent="Torso", child="BLT", type="revolute", position="-.325 -2.425 1")
+        pyrosim.Send_Cube(name="BLT", pos=[0, 0, -0.5], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="BLT_BLL", parent="BLT", child="BLL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="BLL", pos=[0, 0, -0.5], size=[0.1, 0.1, 0.5])
+
+        pyrosim.Send_Joint(name="Torso_BRT", parent="Torso", child="BRT", type="revolute", position="-.325 2.425 1")
+        pyrosim.Send_Cube(name="BRT", pos=[0, 0, -0.5], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="BRT_BRL", parent="BRT", child="BRL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="BRL", pos=[0, 0, -0.5], size=[0.1, 0.1, 0.5])
+
+    elif(n==2):
+        pyrosim.Send_Cube(name="Torso", pos=[0,0,2], size = [2.5,2.5,1])
+
+        pyrosim.Send_Joint(name="Torso_FLT", parent="Torso", child="FLT", type="revolute", position="1.25 0 1.25")
+        pyrosim.Send_Cube(name="FLT", pos=[0.0725, 0, 0], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="FLT_FLL", parent="FLT", child="FLL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="FLL", pos=[0.0725, 0, 0], size=[0.1, 0.1, 0.5])
+
+        pyrosim.Send_Joint(name="Torso_FRT", parent="Torso", child="FRT", type="revolute", position="-1.25 0 1.25")
+        pyrosim.Send_Cube(name="FRT", pos=[-0.0725, 0, 0], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="FRT_FRL", parent="FRT", child="FRL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="FRL", pos=[-0.0725, 0, 0], size=[0.1, 0.1, 0.5])
+
+        pyrosim.Send_Joint(name="Torso_BLT", parent="Torso", child="BLT", type="revolute", position="-1.25 -1.25 1.25")
+        pyrosim.Send_Cube(name="BLT", pos=[-0.0725, 0.0725, 0], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="BLT_BLL", parent="BLT", child="BLL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="BLL", pos=[-0.0725, 0.0725, 0], size=[0.1, 0.1, 0.5])
+
+        pyrosim.Send_Joint(name="Torso_BRT", parent="Torso", child="BRT", type="revolute", position="-1.25 1.25 1.25")
+        pyrosim.Send_Cube(name="BRT", pos=[-0.0725, -0.0725, 0], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="BRT_BRL", parent="BRT", child="BRL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="BRL", pos=[-0.0725, -0.0725, 0], size=[0.1, 0.1, 0.5])
     
-    pyrosim.Send_Joint(name="Torso_BLT", parent="Torso", child="BLT", type="revolute", position="-1 -0.5 1.25")
-    pyrosim.Send_Cube(name="BLT", pos=[0, 0, -0.5], size=[0.15, 0.15, 0.5])
-    pyrosim.Send_Joint(name="BLT_BLL", parent="BLT", child="BLL", type="revolute", position="0 0 -0.5")
-    pyrosim.Send_Cube(name="BLL", pos=[0, 0, -0.5], size=[0.1, 0.1, 0.5])
+    elif(n==3):
+        pyrosim.Send_Cube(name="Torso", pos=[0,0,1.5], size = [1,.5,.5])
 
-    pyrosim.Send_Joint(name="Torso_BRT", parent="Torso", child="BRT", type="revolute", position="-1 0.5 1.25")
-    pyrosim.Send_Cube(name="BRT", pos=[0, 0, -0.5], size=[0.15, 0.15, 0.5])
-    pyrosim.Send_Joint(name="BRT_BRL", parent="BRT", child="BRL", type="revolute", position="0 0 -0.5")
-    pyrosim.Send_Cube(name="BRL", pos=[0, 0, -0.5], size=[0.1, 0.1, 0.5])
+        pyrosim.Send_Joint(name="Torso_FLT", parent="Torso", child="FLT", type="revolute", position="-.425 0.1775 0.875")
+        pyrosim.Send_Cube(name="FLT", pos=[-0.1, 0.1, 0], size=[0.15, 0.15, 0.75])
+        pyrosim.Send_Joint(name="FLT_FLL", parent="FLT", child="FLL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="FLL", pos=[-0.1, 0.1, 0], size=[0.1, 0.1, 0.5])
 
+        pyrosim.Send_Joint(name="Torso_FRT", parent="Torso", child="FRT", type="revolute", position="-.425 -0.1775 0.875")
+        pyrosim.Send_Cube(name="FRT", pos=[-0.1, -0.1, 0], size=[0.15, 0.15, 0.75])
+        pyrosim.Send_Joint(name="FRT_FRL", parent="FRT", child="FRL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="FRL", pos=[-0.1, -0.1, 0], size=[0.1, 0.1, 0.5])
+
+        pyrosim.Send_Joint(name="Torso_BLT", parent="Torso", child="BLT", type="revolute", position=".425 0.1775 1")
+        pyrosim.Send_Cube(name="BLT", pos=[-0.1, 0.1, 0], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="BLT_BLL", parent="BLT", child="BLL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="BLL", pos=[-0.1, 0.1, 0], size=[0.1, 0.1, 0.5])
+
+        pyrosim.Send_Joint(name="Torso_BRT", parent="Torso", child="BRT", type="revolute", position=".425 -0.1775 1")
+        pyrosim.Send_Cube(name="BRT", pos=[-0.1, -0.1, 0], size=[0.15, 0.15, 0.5])
+        pyrosim.Send_Joint(name="BRT_BRL", parent="BRT", child="BRL", type="revolute", position="0 0 -0.5")
+        pyrosim.Send_Cube(name="BRL", pos=[-0.1, -0.1, 0], size=[0.1, 0.1, 0.5])
+    
     pyrosim.End()
 
 def Create_Brain(genes):
