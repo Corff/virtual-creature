@@ -29,10 +29,10 @@ class SIMULATION:
             self.robot.Sense(i)
             self.robot.Think(i)
             self.robot.Act(i)
-
-        p.disconnect()
         
-        return self.robot.Get_Fitness()
+        fitness =  self.robot.Get_Fitness()
+        p.disconnect()
+        return fitness
 
     def __del__(self):
         p.disconnect()
