@@ -57,7 +57,7 @@ def Create_Brain(genes):
     pyrosim.Send_Motor_Neuron(name = 15 , jointName = "BLT_BLL")
     pyrosim.Send_Motor_Neuron(name = 16 , jointName = "BRT_BRL")
 
-    for s in range(8):
+    for s in range(9):
         for m in range(8):
             pyrosim.Send_Synapse(sourceNeuronName = s , targetNeuronName = m+9 , weight = genes[m][s])
 
@@ -65,4 +65,4 @@ def Create_Brain(genes):
 
 if __name__ == "__main__":
     Create_Body()
-    Create_Brain([[0.1 for _ in range(8)] for _ in range(8)])
+    Create_Brain([[0.1 for _ in range(9)] for _ in range(8)])

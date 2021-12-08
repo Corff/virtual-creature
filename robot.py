@@ -12,7 +12,7 @@ class ROBOT:
         self.motors = {}
         self.motorValues = np.linspace(-np.pi, np.pi, 10000)
         self.id = p.loadURDF("body.urdf")
-        self.nn = NEURAL_NETWORK("brain_nl.nndf")
+        self.nn = NEURAL_NETWORK("brain.nndf")
         pyrosim.Prepare_To_Simulate("body.urdf")
         self.Prepare_To_Sense()
         self.Prerpare_To_Act()

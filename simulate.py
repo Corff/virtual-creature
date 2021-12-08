@@ -6,7 +6,7 @@ def eval(genes, penalty = False):
 	sim = SIMULATION(False)
 	return sim.Run(1000, penalty)
 
-def demo():
+def demo(genes):
 	#Create_Brain(genes)
 	sim = SIMULATION(True)
 	sim.Demo(2500)

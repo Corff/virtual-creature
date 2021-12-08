@@ -6,28 +6,18 @@ def step(gene, fitness):
     m = random.randint(0, 7)
     old_gene = gene[m][s]
     gene[m][s] = random.random() * 2 - 1
-    new_fitness = eval(gene)
+    new_fitness = eval(gene, True)
     if new_fitness > fitness:
         fitness = new_fitness
     else:
         gene[m][s] = old_gene
     return gene, fitness
 
-best_gene = []
-best_fitness = 0
+gene = [[random.random() - 0.5 for _ in range(9)] for _ in range(8)]
 
-for n in range(100):
-    gene = [[random.random() - 0.5 for _ in range(9)] for _ in range(8)]
-    fitness = eval(gene)
-    for i in range(100):
-        gene, fitness = step(gene, fitness)
-        print(n, i, fitness, end='\r')
+fitness = eval(gene, True)
+for i in range(100):
+    gene, fitness = step(gene, fitness)
+    print(i, fitness)
 
-    if fitness > best_fitness:
-        best_gene = gene
-        best_fitness = fitness
-    
-    print(n, best_fitness, fitness)
-
-print(gene)
 demo()
