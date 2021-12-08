@@ -29,6 +29,8 @@ class SIMULATION:
             self.robot.Sense(i)
             self.robot.Think(i)
             self.robot.Act(i)
+
+        p.disconnect()
         
         return self.robot.Get_Fitness()
 
