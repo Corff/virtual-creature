@@ -19,20 +19,29 @@ class SIMULATION:
         self.robot = ROBOT(p, 2, 2)
 
     def Demo(self, n):
-        for i in range(n):
+        while True:
             p.stepSimulation()
-            self.robot.Sense(i)
-            self.robot.Think(i)
-            self.robot.Act(i)
-            time.sleep(1.0/3000.0)
+            self.robot.Sense(0)
+            self.robot.Think(0)
+            self.robot.Act(0)
+            time.sleep(1.0/10000.0)
 
-    def Run(self, n):
+    def Run(self, n, penalty):
+        if penalty:
+            penalty_total = 0
+            penalty_counter = 0
         for i in range(n):
             p.stepSimulation()
             self.robot.Sense(i)
             self.robot.Think(i)
             self.robot.Act(i)
+            if penalty:
+                if self.robot.nn.neurons['0'].Get_Value() == 1:
+                    penalty_counter+=1
+                    penalty_total+=0.5*(1/penalty_counter)
         
         fitness =  self.robot.Get_Fitness()
+        if penalty:
+            fitness-=penalty_total
         p.disconnect()
         return fitness

@@ -38,27 +38,28 @@ def Create_Body():
 def Create_Brain(genes):
     pyrosim.Start_NeuralNetwork("brain.nndf")
 
-    pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "FLT")
-    pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "FLL")
-    pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "FRT")
-    pyrosim.Send_Sensor_Neuron(name = 3 , linkName = "FRL")
-    pyrosim.Send_Sensor_Neuron(name = 4 , linkName = "BLT")
-    pyrosim.Send_Sensor_Neuron(name = 5 , linkName = "BLL")
-    pyrosim.Send_Sensor_Neuron(name = 6 , linkName = "BRT")
-    pyrosim.Send_Sensor_Neuron(name = 7 , linkName = "BRL")
+    pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
+    pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "FLT")
+    pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "FLL")
+    pyrosim.Send_Sensor_Neuron(name = 3 , linkName = "FRT")
+    pyrosim.Send_Sensor_Neuron(name = 4 , linkName = "FRL")
+    pyrosim.Send_Sensor_Neuron(name = 5 , linkName = "BLT")
+    pyrosim.Send_Sensor_Neuron(name = 6 , linkName = "BLL")
+    pyrosim.Send_Sensor_Neuron(name = 7 , linkName = "BRT")
+    pyrosim.Send_Sensor_Neuron(name = 8 , linkName = "BRL")
 
-    pyrosim.Send_Motor_Neuron(name = 8 , jointName = "Torso_FLT")
-    pyrosim.Send_Motor_Neuron(name = 9 , jointName = "Torso_FRT")
-    pyrosim.Send_Motor_Neuron(name = 10 , jointName = "Torso_BLT")
-    pyrosim.Send_Motor_Neuron(name = 11 , jointName = "Torso_BRT")
-    pyrosim.Send_Motor_Neuron(name = 12 , jointName = "FLT_FLL")
-    pyrosim.Send_Motor_Neuron(name = 13 , jointName = "FRT_FRL")
-    pyrosim.Send_Motor_Neuron(name = 14 , jointName = "BLT_BLL")
-    pyrosim.Send_Motor_Neuron(name = 15 , jointName = "BRT_BRL")
+    pyrosim.Send_Motor_Neuron(name = 9 , jointName = "Torso_FLT")
+    pyrosim.Send_Motor_Neuron(name = 10 , jointName = "Torso_FRT")
+    pyrosim.Send_Motor_Neuron(name = 11 , jointName = "Torso_BLT")
+    pyrosim.Send_Motor_Neuron(name = 12 , jointName = "Torso_BRT")
+    pyrosim.Send_Motor_Neuron(name = 13 , jointName = "FLT_FLL")
+    pyrosim.Send_Motor_Neuron(name = 14 , jointName = "FRT_FRL")
+    pyrosim.Send_Motor_Neuron(name = 15 , jointName = "BLT_BLL")
+    pyrosim.Send_Motor_Neuron(name = 16 , jointName = "BRT_BRL")
 
     for s in range(8):
         for m in range(8):
-            pyrosim.Send_Synapse(sourceNeuronName = s , targetNeuronName = m+8 , weight = genes[m][s])
+            pyrosim.Send_Synapse(sourceNeuronName = s , targetNeuronName = m+9 , weight = genes[m][s])
 
     pyrosim.End()
 

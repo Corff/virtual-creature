@@ -12,7 +12,7 @@ class ROBOT:
         self.motors = {}
         self.motorValues = np.linspace(-np.pi, np.pi, 10000)
         self.id = p.loadURDF("body.urdf")
-        self.nn = NEURAL_NETWORK("brain.nndf")
+        self.nn = NEURAL_NETWORK("brain_nl.nndf")
         pyrosim.Prepare_To_Simulate("body.urdf")
         self.Prepare_To_Sense()
         self.Prerpare_To_Act()
@@ -48,4 +48,9 @@ class ROBOT:
 
     def Get_Fitness(self):
         pos = p.getLinkState(self.id,0)[0]
-        return (((pos[0]-1) ** 2) + ((pos[1]+0.5) ** 2)) ** 0.5
+        # penalty = 0
+        # if self.nn.neurons['0'].Get_Value() == 1:
+        #     penalty += 1
+        #     print(penalty)
+        #return pos[0]
+        return (((pos[0]-1) ** 2) + ((pos[1]+0.5) ** 2)) ** 0.5# - penalty
