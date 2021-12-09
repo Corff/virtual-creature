@@ -9,10 +9,9 @@ def Create_World():
 
 def Create_Body():
     pyrosim.Start_URDF("body.urdf")
-    n = 3
+    n = 2
 
     if n == 0:
-    # Bodies
         pyrosim.Send_Cube(name="Torso", pos=[0, 0, 1], size=[2, 1, 0.5])
         
         pyrosim.Send_Joint(name="Torso_FLT", parent="Torso", child="FLT", type="revolute", position="1 -0.5 1.25")
